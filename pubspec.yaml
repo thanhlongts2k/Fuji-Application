@@ -1,5 +1,5 @@
 name: getx_skeleton
-version: 1.0.1+16
+version: 1.0.1+21
 publish_to: none
 description: start your project in the fastest way
 environment:
@@ -37,6 +37,8 @@ dependencies:
   flutter_html: ^3.0.0-beta.2
   webview_flutter: any
   syncfusion_flutter_pdfviewer: ^27.1.58
+  # google_mlkit_text_recognition: ^0.14.0 
+  # image_picker: any
 
   flutter:
     sdk: flutter

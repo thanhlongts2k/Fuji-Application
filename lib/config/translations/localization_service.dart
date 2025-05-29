@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import '../../app/data/local/my_shared_pref.dart';
 import 'ja_JP/ja_jp_translation.dart';
 import 'en_US/en_us_translation.dart';
-import 'ja_JP/ja_jp_translation.dart';
 
 class LocalizationService extends Translations {
   // prevent creating instance

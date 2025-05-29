@@ -21,10 +21,10 @@ packages:
     dependency: "direct main"
     description:
       name: ai_barcode_scanner
-      sha256: "53f16604e9407d0079dd7536254fa2552c980ccbb29defb4c051bc105b4be7bc"
+      sha256: b6bac0dbaa0458cda27fa03d0b051b3cdf76ae11149ab49c4e0a5132bc84cddc
       url: "https://pub.dev"
     source: hosted
-    version: "5.2.1"
+    version: "5.2.2"
   analyzer:
     dependency: transitive
     description:

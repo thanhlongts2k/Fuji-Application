@@ -1,17 +1,10 @@
 import 'package:ai_barcode_scanner/ai_barcode_scanner.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/modules/home/views/detail_product_view.dart';
-
-import '../../../../config/translations/strings_enum.dart';
-import '../../../components/api_error_widget.dart';
-import '../../../components/my_widgets_animator.dart';
 import '../controllers/home_controller.dart';
 import 'widgets/data_grid.dart';
-import 'widgets/product_list.dart';
 import 'widgets/header.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -33,7 +26,7 @@ class HomeView extends GetView<HomeController> {
           children: [
             // ----------------------- Header ----------------------- //
             const Header(),
-            Padding(
+           Padding(
                 padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 20),
                 child: Column(
                   children: [
@@ -46,8 +39,7 @@ class HomeView extends GetView<HomeController> {
                             builder: (context) => AiBarcodeScanner(
                               onDispose: () {
                                 debugPrint("Barcode scanner disposed!");
-                              },
-                              sheetTitle: Strings.makeANewScan.tr,
+                              },sheetTitle: 'Make a new Scan',
                               hideGalleryButton: false,
                               controller: MobileScannerController(
                                 detectionSpeed: DetectionSpeed.noDuplicates,
@@ -59,8 +51,8 @@ class HomeView extends GetView<HomeController> {
                                   Navigator.of(context)
                                       .push(
                                     MaterialPageRoute(
-                                      builder: (context) => ProductDetailScreen(
-                                          sku: scannedValue),
+                                      builder: (context) =>
+                                          ProductDetailScreen(sku: scannedValue),
                                     ),
                                   )
                                       .then((_) {
@@ -76,20 +68,20 @@ class HomeView extends GetView<HomeController> {
                         decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 239, 71, 59),
                             borderRadius: BorderRadius.circular(6)),
-                        child: ListTile(
+                        child: const ListTile(
                           title: Text(
-                            Strings.makeANewScan.tr,
-                            style: const TextStyle(
+                            'Make a new Scan',
+                            style: TextStyle(
                                 fontSize: 17,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white),
                           ),
-                          trailing: const Icon(
+                          trailing: Icon(
                             Icons.arrow_forward_ios,
                             size: 17,
                             color: Colors.white,
                           ),
-                          leading: const Icon(
+                          leading: Icon(
                             Icons.qr_code_scanner_sharp,
                             size: 32,
                             color: Colors.white,
@@ -101,31 +93,6 @@ class HomeView extends GetView<HomeController> {
                     DataGrid()
                   ],
                 ))
-
-            // ----------------------- Content ----------------------- //
-            // GetBuilder<HomeController>(builder: (_) {
-            //   return Expanded(
-            //     child: MyWidgetsAnimator(
-            //       apiCallStatus: controller.apiCallStatus,
-            //       loadingWidget: () => const Center(
-            //         child: CupertinoActivityIndicator(),
-            //       ),
-            //       errorWidget: () => ApiErrorWidget(
-            //         message: Strings.internetError.tr,
-            //         retryAction: () => controller.getData(),
-            //         padding: EdgeInsets.symmetric(horizontal: 20.w),
-            //       ),
-            //       successWidget: () => SingleChildScrollView(
-            //         child: Column(
-            //           children: [
-            //             ProductsList(),
-            //           ],
-            //         ),
-            //       ),
-            //     ),
-            //   );
-            // }),
-            // const Spacer(),
           ],
         ),
       ),

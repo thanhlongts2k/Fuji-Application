@@ -21,7 +21,7 @@ class Header extends StatelessWidget {
       height: 100.h,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.blue,
+        color: Colors.white,
       ),
       child: Stack(
         fit: StackFit.expand,
@@ -70,8 +70,8 @@ class Header extends StatelessWidget {
                     );
                   },
                   child: Container(
-                    height: 39.h,
-                    width: 39.h,
+                    height: 62.h,
+                    width: 62.h,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(8.r),
@@ -83,24 +83,16 @@ class Header extends StatelessWidget {
                   ),
                 ),
                 9.horizontalSpace,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      '${Strings.goodMorning.tr}',
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      '🌞',
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        color: Colors.white,
-                        fontSize: 12.sp,
-                      ),
-                    ),
-                  ],
+             const  Text(
+                  'FUJI TECHNOLOGY',
+                  style: TextStyle(
+                    fontFamily:
+                        'Montserrat', // hoặc Roboto nếu không import font ngoài
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22, // điều chỉnh theo nhu cầu
+                    color: Color(0xFFFF0000), // Màu đỏ giống logo
+                    letterSpacing: 1.5,
+                  ),
                 ),
                 const Spacer(),
 
