@@ -4,6 +4,8 @@ import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class AppGuideScreen extends StatefulWidget {
+  const AppGuideScreen({super.key});
+
   @override
   State<AppGuideScreen> createState() => _AppGuideScreenState();
 }

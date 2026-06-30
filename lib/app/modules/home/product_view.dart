@@ -1,12 +1,5 @@
-import 'dart:io';
-
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:getx_skeleton/app/modules/home/views/detail_product_view.dart';
-import 'package:getx_skeleton/config/theme/theme_extensions/employee_list_item_theme_data.dart';
 import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import 'package:getx_skeleton/utils/constants.dart';
 import 'package:http/http.dart' as http;
@@ -15,6 +8,8 @@ import 'dart:convert';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class ProductsListScreen extends StatefulWidget {
+  const ProductsListScreen({super.key});
+
   @override
   State<ProductsListScreen> createState() => _ProductsListScreenState();
 }

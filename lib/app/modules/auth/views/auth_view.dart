@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:getx_skeleton/app/modules/auth/views/register_view.dart';
 import 'package:getx_skeleton/app/modules/auth/views/resetpassword_view.dart';
@@ -10,6 +9,8 @@ import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import '../controllers/auth_controller.dart';
 
 class AuthView extends StatefulWidget {
+  const AuthView({super.key});
+
   @override
   _AuthViewState createState() => _AuthViewState();
 }
@@ -166,7 +167,7 @@ class _AuthViewState extends State<AuthView> {
                       // Register Button
                       TextButton(
                         onPressed: () {
-                          Get.to(() => RegisterView());
+                          Get.to(() => const RegisterView());
                         },
                         child: Text(
                           Strings.promptRegister.tr,

@@ -1,0 +1,10 @@
+Flutter SDK 3.24.0 (khuyen nghi dung FVM)
+Dart SDK >=3.3.4 <4.0.0
+Android SDK (compileSdkVersion 34, targetSdkVersion 34)
+Java 8 hoac moi hon
+Kotlin 1.8.21
+Xcode 15+ de build iOS
+CocoaPods (cho iOS)
+Tai khoan va cau hinh Firebase hop le
+File .env chua FUJI_BASE_URL, FUJI_WC_CONSUMER_KEY, FUJI_WC_CONSUMER_SECRET
+Android signing config trong android/key.properties neu build release

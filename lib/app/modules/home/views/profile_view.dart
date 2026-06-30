@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:getx_skeleton/config/translations/strings_enum.dart';
 
 class ProfileView extends StatelessWidget {
+  ProfileView({super.key});
+
   final User? user = FirebaseAuth.instance.currentUser;
 
   @override
@@ -43,38 +45,38 @@ class ProfileView extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Center(
                 child: Text(
                   user?.displayName ?? Strings.noDisplayName.tr,
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Center(
                 child: Text(
                   user?.email ?? 'No Email',
                   style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                 ),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () async {
                   await FirebaseAuth.instance.signOut();
-                  Get.offAll(() => AuthView());
+                  Get.offAll(() => const AuthView());
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
                 child: Text(
                   Strings.signOut.tr,
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: const TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () async {
                   bool? confirmDelete = await showDialog(
@@ -98,7 +100,7 @@ class ProfileView extends StatelessWidget {
                   if (confirmDelete == true) {
                     try {
                       await user?.delete();
-                      Get.offAll(() => AuthView());
+                      Get.offAll(() => const AuthView());
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text(Strings.unableToDeleteAccount.tr),
@@ -107,14 +109,14 @@ class ProfileView extends StatelessWidget {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
                 child: Text(
                   Strings.deleteAccountButton.tr,
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: const TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
             ],

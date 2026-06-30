@@ -36,9 +36,7 @@ class ProductDetailScreen extends StatelessWidget {
         var imageUrl = product['images'][0]['src'];
         var name = product['name'];
         var description = product['description'];
-        var short_description = product['short_description'];
-        var stockStatus = product['stock_status'];
-        var permalink = product['permalink'];
+        var shortDescription = product['short_description'];
 
         return SingleChildScrollView(
           child: Padding(
@@ -82,7 +80,7 @@ class ProductDetailScreen extends StatelessWidget {
                 // ),
                 const SizedBox(height: 16),
                 // Hiển thị mô tả sản phẩm
-                Html(data: short_description),
+                Html(data: shortDescription),
                 Html(data: description),
           
                 const SizedBox(height: 16),

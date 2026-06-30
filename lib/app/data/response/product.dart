@@ -57,64 +57,65 @@ class Product {
   String? wooqrCode;
   Links? lLinks;
 
-  Product(
-      {this.id,
-      this.name,
-      this.slug,
-      this.permalink,
-      this.dateCreated,
-      this.dateCreatedGmt,
-      this.dateModified,
-      this.dateModifiedGmt,
-      this.type,
-      this.status,
-      this.featured,
-      this.catalogVisibility,
-      this.description,
-      this.shortDescription,
-      this.sku,
-      this.price,
-      this.regularPrice,
-      this.salePrice,
-      this.onSale,
-      this.purchasable,
-      this.totalSales,
-      this.virtual,
-      this.downloadable,
-      this.downloadLimit,
-      this.downloadExpiry,
-      this.externalUrl,
-      this.buttonText,
-      this.taxStatus,
-      this.taxClass,
-      this.manageStock,
-      this.stockQuantity,
-      this.backorders,
-      this.backordersAllowed,
-      this.backordered,
-      this.soldIndividually,
-      this.weight,
-      this.dimensions,
-      this.shippingRequired,
-      this.shippingTaxable,
-      this.shippingClass,
-      this.shippingClassId,
-      this.reviewsAllowed,
-      this.averageRating,
-      this.ratingCount,
-      this.parentId,
-      this.purchaseNote,
-      this.categories,
-      this.images,
-      this.menuOrder,
-      this.priceHtml,
-      this.relatedIds,
-      this.metaData,
-      this.stockStatus,
-      this.hasOptions,
-      this.postPassword,
-      this.wooqrCode,
-      this.lLinks});
+  Product({
+    this.id,
+    this.name,
+    this.slug,
+    this.permalink,
+    this.dateCreated,
+    this.dateCreatedGmt,
+    this.dateModified,
+    this.dateModifiedGmt,
+    this.type,
+    this.status,
+    this.featured,
+    this.catalogVisibility,
+    this.description,
+    this.shortDescription,
+    this.sku,
+    this.price,
+    this.regularPrice,
+    this.salePrice,
+    this.onSale,
+    this.purchasable,
+    this.totalSales,
+    this.virtual,
+    this.downloadable,
+    this.downloadLimit,
+    this.downloadExpiry,
+    this.externalUrl,
+    this.buttonText,
+    this.taxStatus,
+    this.taxClass,
+    this.manageStock,
+    this.stockQuantity,
+    this.backorders,
+    this.backordersAllowed,
+    this.backordered,
+    this.soldIndividually,
+    this.weight,
+    this.dimensions,
+    this.shippingRequired,
+    this.shippingTaxable,
+    this.shippingClass,
+    this.shippingClassId,
+    this.reviewsAllowed,
+    this.averageRating,
+    this.ratingCount,
+    this.parentId,
+    this.purchaseNote,
+    this.categories,
+    this.images,
+    this.menuOrder,
+    this.priceHtml,
+    this.relatedIds,
+    this.metaData,
+    this.stockStatus,
+    this.hasOptions,
+    this.postPassword,
+    this.wooqrCode,
+    this.lLinks,
+  });
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -153,9 +154,8 @@ class Product {
     backordered = json['backordered'];
     soldIndividually = json['sold_individually'];
     weight = json['weight'];
-    dimensions = json['dimensions'] != null
-        ? new Dimensions.fromJson(json['dimensions'])
-        : null;
+    dimensions =
+        json['dimensions'] != null ? Dimensions.fromJson(json['dimensions']) : null;
     shippingRequired = json['shipping_required'];
     shippingTaxable = json['shipping_taxable'];
     shippingClass = json['shipping_class'];
@@ -165,102 +165,99 @@ class Product {
     ratingCount = json['rating_count'];
     parentId = json['parent_id'];
     purchaseNote = json['purchase_note'];
+
     if (json['categories'] != null) {
-      categories = <Categories>[];
+      categories = [];
       json['categories'].forEach((v) {
-        categories!.add(new Categories.fromJson(v));
+        categories!.add(Categories.fromJson(v));
       });
     }
+
     if (json['images'] != null) {
-      images = <Images>[];
+      images = [];
       json['images'].forEach((v) {
-        images!.add(new Images.fromJson(v));
+        images!.add(Images.fromJson(v));
       });
     }
+
     menuOrder = json['menu_order'];
     priceHtml = json['price_html'];
     relatedIds = json['related_ids'].cast<int>();
-    // if (json['meta_data'] != null) {
-    //   metaData = <MetaData>[];
-    //   json['meta_data'].forEach((v) {
-    //     metaData!.add(new MetaData.fromJson(v));
-    //   });
-    // }
     stockStatus = json['stock_status'];
     hasOptions = json['has_options'];
     postPassword = json['post_password'];
     wooqrCode = json['wooqr_code'];
-    lLinks = json['_links'] != null ? new Links.fromJson(json['_links']) : null;
+    lLinks = json['_links'] != null ? Links.fromJson(json['_links']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['slug'] = this.slug;
-    data['permalink'] = this.permalink;
-    data['date_created'] = this.dateCreated;
-    data['date_created_gmt'] = this.dateCreatedGmt;
-    data['date_modified'] = this.dateModified;
-    data['date_modified_gmt'] = this.dateModifiedGmt;
-    data['type'] = this.type;
-    data['status'] = this.status;
-    data['featured'] = this.featured;
-    data['catalog_visibility'] = this.catalogVisibility;
-    data['description'] = this.description;
-    data['short_description'] = this.shortDescription;
-    data['sku'] = this.sku;
-    data['price'] = this.price;
-    data['regular_price'] = this.regularPrice;
-    data['sale_price'] = this.salePrice;
-    data['on_sale'] = this.onSale;
-    data['purchasable'] = this.purchasable;
-    data['total_sales'] = this.totalSales;
-    data['virtual'] = this.virtual;
-    data['downloadable'] = this.downloadable;
-    data['download_limit'] = this.downloadLimit;
-    data['download_expiry'] = this.downloadExpiry;
-    data['external_url'] = this.externalUrl;
-    data['button_text'] = this.buttonText;
-    data['tax_status'] = this.taxStatus;
-    data['tax_class'] = this.taxClass;
-    data['manage_stock'] = this.manageStock;
-    data['stock_quantity'] = this.stockQuantity;
-    data['backorders'] = this.backorders;
-    data['backorders_allowed'] = this.backordersAllowed;
-    data['backordered'] = this.backordered;
-    data['sold_individually'] = this.soldIndividually;
-    data['weight'] = this.weight;
-    if (this.dimensions != null) {
-      data['dimensions'] = this.dimensions!.toJson();
+    final Map<String, dynamic> data = {};
+    data['id'] = id;
+    data['name'] = name;
+    data['slug'] = slug;
+    data['permalink'] = permalink;
+    data['date_created'] = dateCreated;
+    data['date_created_gmt'] = dateCreatedGmt;
+    data['date_modified'] = dateModified;
+    data['date_modified_gmt'] = dateModifiedGmt;
+    data['type'] = type;
+    data['status'] = status;
+    data['featured'] = featured;
+    data['catalog_visibility'] = catalogVisibility;
+    data['description'] = description;
+    data['short_description'] = shortDescription;
+    data['sku'] = sku;
+    data['price'] = price;
+    data['regular_price'] = regularPrice;
+    data['sale_price'] = salePrice;
+    data['on_sale'] = onSale;
+    data['purchasable'] = purchasable;
+    data['total_sales'] = totalSales;
+    data['virtual'] = virtual;
+    data['downloadable'] = downloadable;
+    data['download_limit'] = downloadLimit;
+    data['download_expiry'] = downloadExpiry;
+    data['external_url'] = externalUrl;
+    data['button_text'] = buttonText;
+    data['tax_status'] = taxStatus;
+    data['tax_class'] = taxClass;
+    data['manage_stock'] = manageStock;
+    data['stock_quantity'] = stockQuantity;
+    data['backorders'] = backorders;
+    data['backorders_allowed'] = backordersAllowed;
+    data['backordered'] = backordered;
+    data['sold_individually'] = soldIndividually;
+    data['weight'] = weight;
+    if (dimensions != null) {
+      data['dimensions'] = dimensions!.toJson();
     }
-    data['shipping_required'] = this.shippingRequired;
-    data['shipping_taxable'] = this.shippingTaxable;
-    data['shipping_class'] = this.shippingClass;
-    data['shipping_class_id'] = this.shippingClassId;
-    data['reviews_allowed'] = this.reviewsAllowed;
-    data['average_rating'] = this.averageRating;
-    data['rating_count'] = this.ratingCount;
-    data['parent_id'] = this.parentId;
-    data['purchase_note'] = this.purchaseNote;
-    if (this.categories != null) {
-      data['categories'] = this.categories!.map((v) => v.toJson()).toList();
+    data['shipping_required'] = shippingRequired;
+    data['shipping_taxable'] = shippingTaxable;
+    data['shipping_class'] = shippingClass;
+    data['shipping_class_id'] = shippingClassId;
+    data['reviews_allowed'] = reviewsAllowed;
+    data['average_rating'] = averageRating;
+    data['rating_count'] = ratingCount;
+    data['parent_id'] = parentId;
+    data['purchase_note'] = purchaseNote;
+    if (categories != null) {
+      data['categories'] = categories!.map((v) => v.toJson()).toList();
     }
-    if (this.images != null) {
-      data['images'] = this.images!.map((v) => v.toJson()).toList();
+    if (images != null) {
+      data['images'] = images!.map((v) => v.toJson()).toList();
     }
-    data['menu_order'] = this.menuOrder;
-    data['price_html'] = this.priceHtml;
-    data['related_ids'] = this.relatedIds;
-    if (this.metaData != null) {
-      data['meta_data'] = this.metaData!.map((v) => v.toJson()).toList();
+    data['menu_order'] = menuOrder;
+    data['price_html'] = priceHtml;
+    data['related_ids'] = relatedIds;
+    if (metaData != null) {
+      data['meta_data'] = metaData!.map((v) => v.toJson()).toList();
     }
-    data['stock_status'] = this.stockStatus;
-    data['has_options'] = this.hasOptions;
-    data['post_password'] = this.postPassword;
-    data['wooqr_code'] = this.wooqrCode;
-    if (this.lLinks != null) {
-      data['_links'] = this.lLinks!.toJson();
+    data['stock_status'] = stockStatus;
+    data['has_options'] = hasOptions;
+    data['post_password'] = postPassword;
+    data['wooqr_code'] = wooqrCode;
+    if (lLinks != null) {
+      data['_links'] = lLinks!.toJson();
     }
     return data;
   }
@@ -280,10 +277,10 @@ class Dimensions {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['length'] = this.length;
-    data['width'] = this.width;
-    data['height'] = this.height;
+    final Map<String, dynamic> data = {};
+    data['length'] = length;
+    data['width'] = width;
+    data['height'] = height;
     return data;
   }
 }
@@ -302,10 +299,10 @@ class Categories {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['slug'] = this.slug;
+    final Map<String, dynamic> data = {};
+    data['id'] = id;
+    data['name'] = name;
+    data['slug'] = slug;
     return data;
   }
 }
@@ -320,15 +317,16 @@ class Images {
   String? name;
   String? alt;
 
-  Images(
-      {this.id,
-      this.dateCreated,
-      this.dateCreatedGmt,
-      this.dateModified,
-      this.dateModifiedGmt,
-      this.src,
-      this.name,
-      this.alt});
+  Images({
+    this.id,
+    this.dateCreated,
+    this.dateCreatedGmt,
+    this.dateModified,
+    this.dateModifiedGmt,
+    this.src,
+    this.name,
+    this.alt,
+  });
 
   Images.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -342,15 +340,15 @@ class Images {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['date_created'] = this.dateCreated;
-    data['date_created_gmt'] = this.dateCreatedGmt;
-    data['date_modified'] = this.dateModified;
-    data['date_modified_gmt'] = this.dateModifiedGmt;
-    data['src'] = this.src;
-    data['name'] = this.name;
-    data['alt'] = this.alt;
+    final Map<String, dynamic> data = {};
+    data['id'] = id;
+    data['date_created'] = dateCreated;
+    data['date_created_gmt'] = dateCreatedGmt;
+    data['date_modified'] = dateModified;
+    data['date_modified_gmt'] = dateModifiedGmt;
+    data['src'] = src;
+    data['name'] = name;
+    data['alt'] = alt;
     return data;
   }
 }
@@ -369,10 +367,10 @@ class MetaData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['key'] = this.key;
-    data['value'] = this.value;
+    final Map<String, dynamic> data = {};
+    data['id'] = id;
+    data['key'] = key;
+    data['value'] = value;
     return data;
   }
 }
@@ -385,26 +383,26 @@ class Links {
 
   Links.fromJson(Map<String, dynamic> json) {
     if (json['self'] != null) {
-      self = <Self>[];
+      self = [];
       json['self'].forEach((v) {
-        self!.add(new Self.fromJson(v));
+        self!.add(Self.fromJson(v));
       });
     }
     if (json['collection'] != null) {
-      collection = <Collection>[];
+      collection = [];
       json['collection'].forEach((v) {
-        collection!.add(new Collection.fromJson(v));
+        collection!.add(Collection.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.self != null) {
-      data['self'] = this.self!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = {};
+    if (self != null) {
+      data['self'] = self!.map((v) => v.toJson()).toList();
     }
-    if (this.collection != null) {
-      data['collection'] = this.collection!.map((v) => v.toJson()).toList();
+    if (collection != null) {
+      data['collection'] = collection!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -420,8 +418,8 @@ class Self {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['href'] = this.href;
+    final Map<String, dynamic> data = {};
+    data['href'] = href;
     return data;
   }
 }
@@ -436,8 +434,8 @@ class Collection {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['href'] = this.href;
+    final Map<String, dynamic> data = {};
+    data['href'] = href;
     return data;
   }
 }

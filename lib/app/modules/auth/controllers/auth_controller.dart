@@ -11,69 +11,62 @@ class AuthController extends GetxController {
   var isLoading = false.obs;
   var isSuccess = false.obs;
 
-  // Đăng ký người dùng mới
-  Future<void> register(
-      String email, String password, String displayName) async {
+  Future<void> register(String email, String password, String displayName) async {
     try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
 
       await userCredential.user?.updateDisplayName(displayName);
       await userCredential.user?.reload();
       isLoggedIn(true);
-      Get.offAll(
-          () => HomeView()); // Chuyển đến HomeView sau khi đăng ký thành công
+      Get.offAll(() => const HomeView());
     } catch (e) {
       Get.snackbar("Error", e.toString());
     }
   }
 
-  // Đăng nhập người dùng
   void login(String email, String password) async {
-    isLoading.value = true; // Bắt đầu trạng thái loading
+    isLoading.value = true;
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
       isLoggedIn(true);
-      Get.offAll(() => HomeView());
+      Get.offAll(() => const HomeView());
     } catch (e) {
       Get.snackbar("Error", e.toString());
-      // Xử lý lỗi
     } finally {
-      isLoading.value = false; // Kết thúc trạng thái loading
+      isLoading.value = false;
     }
   }
 
-  // Đăng xuất người dùng
   Future<void> logout() async {
     await auth.signOut();
     isLoggedIn(false);
-    Get.offAll(
-        () => AuthView()); // Quay lại màn hình đăng nhập sau khi đăng xuất
+    Get.offAll(() => const AuthView());
   }
 
-  // Reset mật khẩu qua email
   Future<void> resetPassword(String email) async {
-    isLoading(true); // Bắt đầu loading
-    isSuccess(false); // Reset trạng thái success
+    isLoading(true);
+    isSuccess(false);
     try {
       await auth.sendPasswordResetEmail(email: email);
-      isSuccess(true); // Thành công
+      isSuccess(true);
       Get.snackbar("Success", Strings.passwordResetEmailSentCheckInbox.tr);
     } catch (e) {
       Get.snackbar("Error", e.toString());
     } finally {
-      isLoading(false); // Kết thúc loading
+      isLoading(false);
     }
   }
 
-  // Kiểm tra trạng thái người dùng
   @override
   void onInit() {
     super.onInit();
     auth.authStateChanges().listen((User? user) {
       if (user != null) {
         isLoggedIn(true);
-        Get.offAll(() => HomeView());
+        Get.offAll(() => const HomeView());
       } else {
         isLoggedIn(false);
       }
@@ -86,7 +79,7 @@ class AuthController extends GetxController {
 
   @override
   void onClose() {
-    isSuccess(false); // Reset trạng thái khi màn hình bị đóng
+    isSuccess(false);
     super.onClose();
   }
 }

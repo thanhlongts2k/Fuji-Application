@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
@@ -17,6 +18,7 @@ import 'package:firebase_core/firebase_core.dart';
 Future<void> main() async {
   // wait for bindings
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: '.env');
   await Firebase.initializeApp();
 
   // initialize local db (hive) and register our custom adapters
@@ -63,7 +65,7 @@ Future<void> main() async {
                   ),
                 );
               },
-              initialRoute: AppPages.AUTH, // first screen to show when app is running
+              initialRoute: AppPages.auth, // first screen to show when app is running
               getPages: AppPages.routes, // app screens
               locale: MySharedPref.getCurrentLocal(), // app language
               translations: LocalizationService.getInstance(), // localization services in app (controller app language)

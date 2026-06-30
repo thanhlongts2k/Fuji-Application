@@ -1,6 +1,25 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class Constants {
-  static const baseUrl = 'https://fuji.technology/wp-json/wc/v3';
-  static const productsApiUrl = baseUrl + '/products?per_page=50&page=1';
-  static const ckUsername = 'ck_acbee3e2f74b6573af4be9af19d9210a1a6e3577';
-  static const csPassword = 'cs_cb5884c2aed51325a4c4b86930ae6e48ea0353cd';
+  static String get baseUrl => _readEnv(
+        'FUJI_BASE_URL',
+        fallback: 'https://fuji.technology/wp-json/wc/v3',
+      );
+
+  static String get productsApiUrl => '$baseUrl/products?per_page=50&page=1';
+
+  static String get ckUsername => _readEnv('FUJI_WC_CONSUMER_KEY');
+
+  static String get csPassword => _readEnv('FUJI_WC_CONSUMER_SECRET');
+
+  static String _readEnv(String key, {String fallback = ''}) {
+    final value = dotenv.env[key];
+    if (value != null && value.isNotEmpty) {
+      return value;
+    }
+    if (fallback.isNotEmpty) {
+      return fallback;
+    }
+    throw StateError('Missing required environment variable: $key');
+  }
 }

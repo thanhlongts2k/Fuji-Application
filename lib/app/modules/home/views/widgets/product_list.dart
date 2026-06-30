@@ -12,7 +12,7 @@ import 'package:getx_skeleton/app/services/api_call_status.dart';
 import '../../../../../config/theme/theme_extensions/employee_list_item_theme_data.dart';
 
 class ProductsList extends StatelessWidget {
-  ProductsList({super.key});
+  const ProductsList({super.key});
 
   @override
   Widget build(BuildContext context) {

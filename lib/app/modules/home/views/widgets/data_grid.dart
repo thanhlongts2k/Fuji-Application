@@ -8,7 +8,6 @@ import 'package:getx_skeleton/app/modules/home/product_view.dart';
 
 import '../../../../../config/translations/strings_enum.dart';
 
-// mock model
 class DataGridModelMock {
   final String title;
   final String iconPath;
@@ -27,36 +26,12 @@ class DataGrid extends StatelessWidget {
   DataGrid({super.key});
 
   final List<DataGridModelMock> data = [
-    // DataGridModelMock(
-    //   title: 'Lift Diagnostics',
-    //   iconPath: 'assets/vectors/vocation.svg',
-    //   backgroundColor: const Color(0xFFEFF5FB),
-    //   iconBackgroundColor: const Color(0xFF83A0EC),
-    // ),
-    // DataGridModelMock(
-    //   title: 'Scans Archire',
-    //   iconPath: 'assets/vectors/tasks.svg',
-    //   backgroundColor: const Color(0xFFEEF9FF),
-    //   iconBackgroundColor: const Color(0xFF92D5F6),
-    // ),
-    // DataGridModelMock(
-    //   title: 'Reminder',
-    //   iconPath: 'assets/vectors/alarm.svg',
-    //   backgroundColor: const Color(0xFFF4F0FC),
-    //   iconBackgroundColor: const Color(0xFFAB99D9),
-    // ),
     DataGridModelMock(
       title: Strings.catalogues.tr,
       iconPath: 'assets/vectors/absent.svg',
       backgroundColor: const Color(0xFFFEF0EF),
       iconBackgroundColor: const Color(0xFFF9928A),
     ),
-    // DataGridModelMock(
-    //   title: 'News',
-    //   iconPath: 'assets/vectors/calendar.svg',
-    //   backgroundColor: const Color.fromARGB(255, 218, 233, 211),
-    //   iconBackgroundColor: const Color.fromARGB(255, 115, 179, 152),
-    // ),
     DataGridModelMock(
       title: Strings.appGuide.tr,
       iconPath: 'assets/vectors/tasks.svg',
@@ -84,19 +59,18 @@ class DataGrid extends StatelessWidget {
         var gridData = data[index];
         return GestureDetector(
           onTap: () {
-            if (gridData.title == 'Catalogues' || gridData.title == 'カタログ') {
+            if (gridData.title == Strings.catalogues.tr) {
               Navigator.push(
                 context,
                 CupertinoPageRoute(
-                  builder: (context) => ProductsListScreen(),
+                  builder: (context) => const ProductsListScreen(),
                 ),
               );
-            } else if (gridData.title == 'App Guide' ||
-                gridData.title == 'アプリガイド') {
+            } else if (gridData.title == Strings.appGuide.tr) {
               Navigator.push(
                 context,
                 CupertinoPageRoute(
-                  builder: (context) => AppGuideScreen(),
+                  builder: (context) => const AppGuideScreen(),
                 ),
               );
             }

@@ -1,15 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:getx_skeleton/app/modules/home/views/profile_view.dart';
-import 'package:getx_skeleton/config/theme/my_theme.dart';
 import 'package:getx_skeleton/config/translations/localization_service.dart';
 
 import '../../../../../config/theme/theme_extensions/header_container_theme_data.dart';
-import '../../../../../config/translations/strings_enum.dart';
-import 'dart:math' as math;
 
 class Header extends StatelessWidget {
   const Header({super.key});
@@ -20,7 +15,7 @@ class Header extends StatelessWidget {
     return Container(
       height: 100.h,
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
       ),
       child: Stack(

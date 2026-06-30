@@ -5,6 +5,8 @@ import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import '../controllers/auth_controller.dart';
 
 class ResetPasswordView extends StatelessWidget {
+  ResetPasswordView({super.key});
+
   final AuthController authController = Get.find<AuthController>();
   final TextEditingController emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();

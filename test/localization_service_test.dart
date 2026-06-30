@@ -6,53 +6,41 @@ import 'package:getx_skeleton/config/translations/localization_service.dart';
 import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-main() async {
+Future<void> main() async {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
     Get.testMode = true;
   });
 
-  // mock initial data
-  Map<String, Object> values = <String, Object>{};
-  SharedPreferences.setMockInitialValues(values);
-
+  SharedPreferences.setMockInitialValues(<String, Object>{});
   await MySharedPref.init();
 
-  test('check if language is supported', (){
-    // check if English is supported
-    bool isEnSupported = LocalizationService.isLanguageSupported('en');
-    expect(isEnSupported, true);
-
-    // check if French supported
-    bool isFrSupported = LocalizationService.isLanguageSupported('fr');
-    expect(isFrSupported, false);
+  test('check if language is supported', () {
+    expect(LocalizationService.isLanguageSupported('en'), true);
+    expect(LocalizationService.isLanguageSupported('ja'), true);
+    expect(LocalizationService.isLanguageSupported('fr'), false);
   });
 
-
-  test('Check getting/updating current local', () async {
+  test('check getting and updating current locale', () async {
     await LocalizationService.updateLanguage('en');
     Locale currentLocale = LocalizationService.getCurrentLocal();
     expect(currentLocale.languageCode, 'en');
 
-    await LocalizationService.updateLanguage('ar');
+    await LocalizationService.updateLanguage('ja');
     Locale currentLocaleAfterUpdate = LocalizationService.getCurrentLocal();
-    expect(currentLocaleAfterUpdate.languageCode, 'ar');
+    expect(currentLocaleAfterUpdate.languageCode, 'ja');
   });
 
+  test('check if current language is English', () async {
+    await LocalizationService.updateLanguage('en');
+    expect(LocalizationService.isItEnglish(), true);
 
-  test('Check if current language is English', () async {
-      await LocalizationService.updateLanguage('en');
-      bool isCurrentLangIsEnglish = LocalizationService.getCurrentLocal().languageCode.contains('en');
-      expect(isCurrentLangIsEnglish, true);
-
-      await LocalizationService.updateLanguage('ar');
-      bool isCurrentLangEnglishAfterUpdate = LocalizationService.getCurrentLocal().languageCode.contains('ar');
-      expect(isCurrentLangEnglishAfterUpdate, true);
+    await LocalizationService.updateLanguage('ja');
+    expect(LocalizationService.isItEnglish(), false);
   });
 
-
-  testWidgets('Check translation', (tester) async {
+  testWidgets('check translation', (tester) async {
     Get.testMode = false;
     await tester.pumpWidget(GetMaterialApp(
       locale: MySharedPref.getCurrentLocal(),
@@ -63,17 +51,16 @@ main() async {
     ));
     await tester.pumpAndSettle();
 
-    // make language english and test the word value
     await LocalizationService.updateLanguage('en');
-
     await tester.pumpAndSettle();
-    String helloWord = Strings.hello.tr;
-    expect(helloWord, 'Hello!');
+    expect(Strings.hello.tr, 'Hello!');
 
-    // make language english and test the word value
-    await LocalizationService.updateLanguage('ar');
+    await LocalizationService.updateLanguage('ja');
     await tester.pumpAndSettle();
-    String helloWordAfterChangingLanguage = Strings.hello.tr;
-    expect(helloWordAfterChangingLanguage, 'مرحباً!');
+    expect(Strings.hello.tr, jaHelloTranslation());
   });
+}
+
+String jaHelloTranslation() {
+  return LocalizationService.getInstance().keys['ja_JP']![Strings.hello]!;
 }

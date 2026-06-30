@@ -25,6 +25,7 @@ dependencies:
   firebase_messaging: ^15.0.0 # fcm services
   firebase_auth: any
   awesome_notifications: ^0.9.3+1 # notifications services (will be used for fcm)
+  flutter_dotenv: ^5.1.0
 
   change_app_package_name: # change package name
   rename_app: 1.4.0 # rename app
@@ -66,6 +67,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - .env
     - assets/images/
     - assets/vectors/
     - assets/fonts/

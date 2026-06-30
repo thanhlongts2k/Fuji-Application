@@ -5,6 +5,8 @@ import 'package:getx_skeleton/config/translations/strings_enum.dart';
 import '../controllers/auth_controller.dart';
 
 class RegisterView extends StatefulWidget {
+  const RegisterView({super.key});
+
   @override
   _RegisterViewState createState() => _RegisterViewState();
 }
